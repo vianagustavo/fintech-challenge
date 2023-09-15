@@ -4,5 +4,17 @@
         <name>fintech-challenge</name>
     </assembly>
     <members>
+        <member name="T:fintechchallenge.Migrations.createpeopletable">
+            <inheritdoc />
+        </member>
+        <member name="M:fintechchallenge.Migrations.createpeopletable.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:fintechchallenge.Migrations.createpeopletable.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:fintechchallenge.Migrations.createpeopletable.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>
