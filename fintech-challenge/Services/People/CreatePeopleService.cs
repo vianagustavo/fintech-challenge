@@ -6,11 +6,11 @@ namespace FintechChallenge.Services;
 
 public class CreatePeopleService : ICreatePeopleService
 {
-    private readonly IPeopleRepository _repository;
+    private readonly IPeopleRepository _peopleRepository;
 
-    public CreatePeopleService(IPeopleRepository repository)
+    public CreatePeopleService(IPeopleRepository peopleRepository)
     {
-        _repository = repository;
+        _peopleRepository = peopleRepository;
     }
 
     public async Task<CreatePeopleResponse> CreatePeople(CreatePeopleRequest createPeopleRequest)
@@ -19,7 +19,7 @@ public class CreatePeopleService : ICreatePeopleService
         string hashedPassword = BCrypt.Net.BCrypt.HashPassword(createPeopleRequest.Password, salt);
         string formattedDocument = createPeopleRequest.Document.Replace(".", "").Replace("-", "");
 
-        var existingDocument = await _repository.GetPeopleByDocument(formattedDocument);
+        var existingDocument = await _peopleRepository.GetPeopleByDocument(formattedDocument);
 
         if (existingDocument != null)
         {
@@ -36,7 +36,7 @@ public class CreatePeopleService : ICreatePeopleService
             DateTime.UtcNow,
             DateTime.UtcNow);
 
-        await _repository.CreatePeople(personToBeCreated);
+        await _peopleRepository.CreatePeople(personToBeCreated);
 
         var response = new CreatePeopleResponse(
             Guid.NewGuid(),

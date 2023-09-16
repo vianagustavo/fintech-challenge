@@ -36,10 +36,33 @@ var configuration = new ConfigurationBuilder()
         var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
         c.IncludeXmlComments(xmlPath);
     });
+
     var databaseConnectionString = configuration["ConnectionStrings:DatabaseUrl"];
     builder.Services.AddDbContext<DatabaseContext>(options =>
         options.UseNpgsql(databaseConnectionString));
 
+    var secretKey = configuration["Authentication:SecretKey"];
+    var key = Encoding.ASCII.GetBytes(secretKey);
+    builder.Services.AddAuthentication(x =>
+    {
+        x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    }).AddJwtBearer(x =>
+    {
+        x.RequireHttpsMetadata = false;
+        x.SaveToken = true;
+        x.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(key),
+            ValidateIssuer = false,
+            ValidateAudience = false,
+        };
+    });
+
+    builder.Services.AddSingleton<IConfiguration>(configuration);
+    builder.Services.AddScoped<ITokenService, TokenService>();
+    builder.Services.AddScoped<ILoginService, LoginService>();
     builder.Services.AddScoped<IPeopleRepository, PeopleRepository>();
     builder.Services.AddScoped<ICreatePeopleService, CreatePeopleService>();
 }
