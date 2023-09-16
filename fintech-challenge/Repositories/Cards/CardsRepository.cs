@@ -28,4 +28,13 @@ public class CardsRepository : ICardsRepository
 
         return accountCards;
     }
+
+    public async Task<List<Card>> GetCardsByPeopleId(Guid peopleId)
+    {
+        var cards = await _context.Cards
+            .Where(card => card.Account.PeopleId == peopleId)
+            .ToListAsync();
+
+        return cards;
+    }
 }
