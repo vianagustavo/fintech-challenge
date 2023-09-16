@@ -26,8 +26,6 @@ public class CreatePeopleService : ICreatePeopleService
             throw new BadRequestException("Document has already been registered");
         }
 
-
-
         var personToBeCreated = new People(
             Guid.NewGuid(),
             createPeopleRequest.Name,
@@ -39,11 +37,11 @@ public class CreatePeopleService : ICreatePeopleService
         await _peopleRepository.CreatePeople(personToBeCreated);
 
         var response = new CreatePeopleResponse(
-            Guid.NewGuid(),
-            createPeopleRequest.Name,
+            personToBeCreated.Id,
+            personToBeCreated.Name,
             formattedDocument,
-            DateTime.UtcNow,
-            DateTime.UtcNow
+            personToBeCreated.CreatedAt,
+            personToBeCreated.UpdatedAt
         );
 
         return response;

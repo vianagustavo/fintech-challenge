@@ -64,7 +64,10 @@ var configuration = new ConfigurationBuilder()
     builder.Services.AddScoped<ITokenService, TokenService>();
     builder.Services.AddScoped<ILoginService, LoginService>();
     builder.Services.AddScoped<IPeopleRepository, PeopleRepository>();
+    builder.Services.AddScoped<IAccountsRepository, AccountsRepository>();
     builder.Services.AddScoped<ICreatePeopleService, CreatePeopleService>();
+    builder.Services.AddScoped<ICreateAccountService, CreateAccountService>();
+    builder.Services.AddScoped<IGetPersonAccountsService, GetPersonAccountsService>();
 }
 
 

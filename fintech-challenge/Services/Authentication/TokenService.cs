@@ -19,7 +19,6 @@ public class TokenService : ITokenService
         var tokenHandler = new JwtSecurityTokenHandler();
 
         var secretKey = _configuration["Authentication:SecretKey"];
-        Console.WriteLine(secretKey);
         var key = Encoding.ASCII.GetBytes(secretKey);
 
         var tokenDescriptor = new SecurityTokenDescriptor

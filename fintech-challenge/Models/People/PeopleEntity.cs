@@ -2,12 +2,13 @@ namespace FintechChallenge.Models;
 
 public class People
 {
-    public Guid Id { get; set;}
-    public string Name { get; set;}
-    public string Password { get; set;}
-    public string Document { get; set;}
-    public DateTime CreatedAt { get; set;}
-    public DateTime UpdatedAt { get; set;}
+    public Guid Id { get; set; }
+    public string Name { get; set; }
+    public string Password { get; set; }
+    public string Document { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; }
+    public ICollection<Account> Accounts { get; } = new List<Account>();
 
     public People(
         Guid id,

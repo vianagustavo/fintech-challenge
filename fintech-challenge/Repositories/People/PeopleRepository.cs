@@ -26,4 +26,11 @@ public class PeopleRepository : IPeopleRepository
 
         return people;
     }
+
+    public async Task<People?> GetPeopleById(Guid id)
+    {
+        var people = await _context.People.FindAsync(id);
+
+        return people;
+    }
 }
