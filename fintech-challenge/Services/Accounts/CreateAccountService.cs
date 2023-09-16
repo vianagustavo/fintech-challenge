@@ -21,7 +21,7 @@ public class CreateAccountService : ICreateAccountService
 
         if (existingPeople == null)
         {
-            throw new NotFoundException("User not found.");
+            throw new NotFoundException("User not found");
         }
 
         var accountToBeCreated = new Account(

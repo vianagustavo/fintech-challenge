@@ -5,5 +5,6 @@ namespace FintechChallenge.Repositories;
 public interface IAccountsRepository
 {
     Task CreateAccount(Account account);
+    Task<Account?> GetAccountById(Guid id);
     Task<List<Account>> GetAccountsByPeopleId(Guid peopleId);
 }
