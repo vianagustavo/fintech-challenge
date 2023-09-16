@@ -17,9 +17,9 @@ public class GetPersonAccountsController : ControllerBase
     }
 
     [HttpGet()]
-    public async Task<IActionResult> CreateAccount(Guid peopleId)
+    public async Task<IActionResult> GetPersonAccounts(Guid peopleId)
     {
-        var personAccounts = await _getPersonAccountsService.GetAccountsByPeopleId(peopleId);
+        var personAccounts = await _getPersonAccountsService.GetPersonAccounts(peopleId);
 
 
         return Ok(personAccounts);

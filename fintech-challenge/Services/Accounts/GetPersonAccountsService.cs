@@ -12,7 +12,7 @@ public class GetPersonAccountsService : IGetPersonAccountsService
         _accountRepository = accountRepository;
     }
 
-    public async Task<List<CreateAccountResponse>> GetAccountsByPeopleId(Guid peopleId)
+    public async Task<List<CreateAccountResponse>> GetPersonAccounts(Guid peopleId)
     {
         var personAccounts = await _accountRepository.GetAccountsByPeopleId(peopleId);
 

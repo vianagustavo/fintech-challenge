@@ -4,5 +4,5 @@ namespace FintechChallenge.Services;
 
 public interface IGetPersonAccountsService
 {
-    Task<List<CreateAccountResponse>> GetAccountsByPeopleId(Guid peopleId);
+    Task<List<CreateAccountResponse>> GetPersonAccounts(Guid peopleId);
 }

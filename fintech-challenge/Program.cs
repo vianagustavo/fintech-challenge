@@ -70,6 +70,7 @@ var configuration = new ConfigurationBuilder()
     builder.Services.AddScoped<ICreateAccountService, CreateAccountService>();
     builder.Services.AddScoped<IGetPersonAccountsService, GetPersonAccountsService>();
     builder.Services.AddScoped<ICreateCardService, CreateCardService>();
+    builder.Services.AddScoped<IGetAccountCardsService, GetAccountCardsService>();
 }
 
 
