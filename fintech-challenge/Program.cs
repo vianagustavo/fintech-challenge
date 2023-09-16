@@ -1,5 +1,8 @@
 ﻿using System.Text;
 using FintechChallenge.Database;
+using FintechChallenge.Middlewares;
+using FintechChallenge.Repositories;
+using FintechChallenge.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -36,11 +39,15 @@ var configuration = new ConfigurationBuilder()
     var databaseConnectionString = configuration["ConnectionStrings:DatabaseUrl"];
     builder.Services.AddDbContext<DatabaseContext>(options =>
         options.UseNpgsql(databaseConnectionString));
+
+    builder.Services.AddScoped<IPeopleRepository, PeopleRepository>();
+    builder.Services.AddScoped<ICreatePeopleService, CreatePeopleService>();
 }
 
 
 var app = builder.Build();
 {
+    app.AddErrorHandler();
     app.UseAuthentication();
     app.UseAuthorization();
     app.UseHttpsRedirection();
