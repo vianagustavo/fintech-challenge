@@ -19,6 +19,12 @@ public class AccountsRepository : IAccountsRepository
 
         await _context.SaveChangesAsync();
     }
+    public async Task<Account?> GetAccountById(Guid id)
+    {
+        var account = await _context.Accounts.FindAsync(id);
+
+        return account;
+    }
 
     public async Task<List<Account>> GetAccountsByPeopleId(Guid peopleId)
     {
@@ -28,5 +34,4 @@ public class AccountsRepository : IAccountsRepository
 
         return personAccounts;
     }
-
 }
