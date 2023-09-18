@@ -28,6 +28,6 @@ jobs:
       run: dotnet build ./src/fintech-challenge.sln --configuration Release --no-restore
 
     - name: Run tests
-        run: dotnet test ./fintech-challenge.Tests
+      run: dotnet test ./fintech-challenge.Tests
 
 
