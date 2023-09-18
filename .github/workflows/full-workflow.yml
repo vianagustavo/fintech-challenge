@@ -27,6 +27,8 @@ jobs:
           dotnet restore
 
     - name: Build project
-      run: dotnet build --configuration Release --no-restore
+      run: |
+          cd fintech-challenge
+          dotnet build --configuration Release --no-restore
 
 
