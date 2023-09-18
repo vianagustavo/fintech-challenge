@@ -8,6 +8,7 @@ namespace FintechChallenge.Database
         public DbSet<People> People { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Card> Cards { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {

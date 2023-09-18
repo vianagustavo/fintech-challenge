@@ -34,4 +34,10 @@ public class AccountsRepository : IAccountsRepository
 
         return personAccounts;
     }
+
+    public async Task UpdateAccountBalance(Account account, decimal valueToAdd)
+    {
+        account.AccountBalance += valueToAdd;
+        await _context.SaveChangesAsync();
+    }
 }

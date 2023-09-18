@@ -66,12 +66,17 @@ var configuration = new ConfigurationBuilder()
     builder.Services.AddScoped<IPeopleRepository, PeopleRepository>();
     builder.Services.AddScoped<IAccountsRepository, AccountsRepository>();
     builder.Services.AddScoped<ICardsRepository, CardsRepository>();
+    builder.Services.AddScoped<ITransactionsRepository, TransactionsRepository>();
     builder.Services.AddScoped<ICreatePeopleService, CreatePeopleService>();
     builder.Services.AddScoped<ICreateAccountService, CreateAccountService>();
     builder.Services.AddScoped<IGetPersonAccountsService, GetPersonAccountsService>();
     builder.Services.AddScoped<ICreateCardService, CreateCardService>();
     builder.Services.AddScoped<IGetAccountCardsService, GetAccountCardsService>();
     builder.Services.AddScoped<IGetPeopleCardsService, GetPeopleCardsService>();
+    builder.Services.AddScoped<ICreateTransactionService, CreateTransactionService>();
+    builder.Services.AddScoped<IGetAccountTransactionsService, GetAccountTransactionsService>();
+    builder.Services.AddScoped<IGetAccountBalanceService, GetAccountBalanceService>();
+    builder.Services.AddScoped<IRevertTransactionService, RevertTransactionService>();
 }
 
 

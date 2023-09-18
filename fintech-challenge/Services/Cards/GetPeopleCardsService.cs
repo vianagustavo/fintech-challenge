@@ -27,20 +27,8 @@ namespace FintechChallenge.Services
 
             var peopleCards = await _cardsRepository.GetCardsByPeopleId(peopleId);
 
-            int currentPage = (skip / take) + 1;
 
-            var pagedCards = peopleCards
-            .Skip(skip)
-            .Take(take)
-            .ToList();
-
-            var paginationInfo = new PaginationInfo
-            {
-                ItemsPerPage = take,
-                CurrentPage = currentPage
-            };
-
-            var formattedCards = pagedCards.Select(card => new CreateCardResponse(
+            var formattedCards = peopleCards.Select(card => new CreateCardResponse(
                 Id: card.Id,
                 Type: card.Type.ToString().ToLower(),
                 Number: card.CardNumber.Substring(card.CardNumber.Length - 4),
@@ -49,10 +37,10 @@ namespace FintechChallenge.Services
                 UpdatedAt: card.UpdatedAt
                 )).ToList();
 
+            var paginationHelper = new PaginationHelper<CreateCardResponse>();
+            var pagedResult = paginationHelper.Paginate(formattedCards, "cards", take, skip);
 
-            var result = new PaginatedResult<CreateCardResponse>("cards", formattedCards, paginationInfo);
-
-            return result;
+            return pagedResult;
         }
     }
 }
