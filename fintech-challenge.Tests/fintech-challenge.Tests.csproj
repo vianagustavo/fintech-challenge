@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\fintech-challenge.csproj" />
+    <ProjectReference Include="..\fintech-challenge\fintech-challenge.csproj" />
   </ItemGroup>
 
 </Project>
