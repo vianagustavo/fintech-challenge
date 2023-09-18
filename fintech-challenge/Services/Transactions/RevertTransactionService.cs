@@ -31,6 +31,11 @@ public class RevertTransactionService : IRevertTransactionService
             throw new NotFoundException("Transaction not found");
         }
 
+        if (transaction.AccountId != accountId)
+        {
+            throw new BadRequestException($"Transaction does not belong to account: {accountId}");
+        }
+
         var valueToRevert = -transaction.Value;
 
         if (account.AccountBalance + valueToRevert < 0)

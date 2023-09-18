@@ -17,7 +17,7 @@ public class RevertTransactionController : ControllerBase
         _revertTransactionService = revertTransactionService;
     }
 
-    [HttpGet()]
+    [HttpPost()]
     public async Task<IActionResult> RevertTransaction(Guid accountId, Guid transactionId)
     {
         var revertTransaction = await _revertTransactionService.RevertTransaction(accountId, transactionId);
