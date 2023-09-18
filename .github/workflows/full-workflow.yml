@@ -1,4 +1,4 @@
-name: .NET 6.0 CI/CD
+name: fintech-challenge pipelines 🤖
 
 on:
   push:
@@ -22,9 +22,9 @@ jobs:
         dotnet-version: 6.0.x
 
     - name: Change to project directory and restore dependencies
-      run: dotnet restore ./fintech-challenge/fintech-challenge.sln
+      run: dotnet restore ./src/fintech-challenge.sln
 
     - name: Build project
-      run: dotnet build ./fintech-challenge/fintech-challenge.sln --configuration Release --no-restore
+      run: dotnet build ./src/fintech-challenge.sln --configuration Release --no-restore
 
 
