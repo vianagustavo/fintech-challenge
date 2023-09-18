@@ -5,5 +5,5 @@ namespace FintechChallenge.Services;
 
 public interface IGetAccountTransactionsService
 {
-    Task<PaginatedResult<CreateTransactionResponse>> GetAccountTransactions(Guid accountId, int take, int skip);
+    Task<PaginatedResult<CreateTransactionResponse>> GetAccountTransactions(Guid accountId, int take, int skip, DateTime? startDate, DateTime? endDate);
 }

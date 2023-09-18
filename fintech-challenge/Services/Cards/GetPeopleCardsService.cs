@@ -38,7 +38,7 @@ namespace FintechChallenge.Services
                 )).ToList();
 
             var paginationHelper = new PaginationHelper<CreateCardResponse>();
-            var pagedResult = paginationHelper.Paginate(formattedCards, "card", take, skip);
+            var pagedResult = paginationHelper.Paginate(formattedCards, "cards", take, skip);
 
             return pagedResult;
         }

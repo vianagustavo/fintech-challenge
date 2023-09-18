@@ -19,7 +19,12 @@ public class TransactionsRepository : ITransactionsRepository
 
         await _context.SaveChangesAsync();
     }
+    public async Task<Transaction?> GetTransactionById(Guid id)
+    {
+        var transaction = await _context.Transactions.FindAsync(id);
 
+        return transaction;
+    }
     public async Task<List<Transaction>> GetTransactionsByAccountId(Guid accountId)
     {
         var accountTransactions = await _context.Transactions
@@ -27,5 +32,11 @@ public class TransactionsRepository : ITransactionsRepository
                 .ToListAsync();
 
         return accountTransactions;
+    }
+
+    public async Task UpdateRevertedTransaction(Transaction transaction)
+    {
+        transaction.RevertedAt = DateTime.UtcNow;
+        await _context.SaveChangesAsync();
     }
 }

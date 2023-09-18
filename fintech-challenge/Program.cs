@@ -74,6 +74,9 @@ var configuration = new ConfigurationBuilder()
     builder.Services.AddScoped<IGetAccountCardsService, GetAccountCardsService>();
     builder.Services.AddScoped<IGetPeopleCardsService, GetPeopleCardsService>();
     builder.Services.AddScoped<ICreateTransactionService, CreateTransactionService>();
+    builder.Services.AddScoped<IGetAccountTransactionsService, GetAccountTransactionsService>();
+    builder.Services.AddScoped<IGetAccountBalanceService, GetAccountBalanceService>();
+    builder.Services.AddScoped<IRevertTransactionService, RevertTransactionService>();
 }
 
 
