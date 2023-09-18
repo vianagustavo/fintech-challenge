@@ -22,13 +22,9 @@ jobs:
         dotnet-version: 6.0.x
 
     - name: Change to project directory and restore dependencies
-      run: |
-          cd fintech-challenge
-          dotnet restore
+      run: dotnet restore ./fintech-challenge/fintech-challenge.sln
 
     - name: Build project
-      run: |
-          cd fintech-challenge
-          dotnet build --configuration Release --no-restore
+      run: dotnet build ./fintech-challenge/fintech-challenge.sln --configuration Release --no-restore
 
 
