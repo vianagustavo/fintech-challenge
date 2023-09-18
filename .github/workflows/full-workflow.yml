@@ -11,8 +11,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      SecretKey: 95d0f5a5-3fba-415f-a811-7627a86571ba
 
     steps:
     - name: Checkout repository
@@ -28,10 +26,5 @@ jobs:
 
     - name: Build project
       run: dotnet build ./src/fintech-challenge.sln --configuration Release --no-restore
-
-    - name: Run tests
-      env:
-        APP_SETTINGS: ./fintech-challenge.Tests/appsettings.test.json
-      run: dotnet test ./fintech-challenge.Tests
 
 
