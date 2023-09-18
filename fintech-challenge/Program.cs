@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 var configuration = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", optional: true)
+    .AddJsonFile("../fintech-challenge.Tests/appsettings.test.json")
     .AddEnvironmentVariables()
     .Build();
 
@@ -42,8 +43,6 @@ var configuration = new ConfigurationBuilder()
         options.UseNpgsql(databaseConnectionString));
 
     var secretKey = configuration["Authentication:SecretKey"];
-
-    secretKey ??= "95d0f5a5-3fba-415f-a811-7627a86571bb";
 
     var key = Encoding.ASCII.GetBytes(secretKey);
     builder.Services.AddAuthentication(x =>
