@@ -42,16 +42,8 @@ var configuration = new ConfigurationBuilder()
         options.UseNpgsql(databaseConnectionString));
 
     var secretKey = configuration["Authentication:SecretKey"];
-    if (secretKey == null)
-    {
-        var testConfiguration = new ConfigurationBuilder()
-        .SetBasePath(Directory.GetCurrentDirectory())
-        .AddJsonFile("./fintech-challenge.Tests/appsettings.test.json", optional: true)
-        .AddEnvironmentVariables()
-        .Build();
 
-        secretKey = testConfiguration["Authentication:SecretKey"];
-    }
+    secretKey ??= "95d0f5a5-3fba-415f-a811-7627a86571bb";
 
     var key = Encoding.ASCII.GetBytes(secretKey);
     builder.Services.AddAuthentication(x =>
