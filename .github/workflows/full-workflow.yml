@@ -21,6 +21,9 @@ jobs:
       with:
         dotnet-version: 6.0.x
 
+      - name: Change to project directory
+      run: cd fintech-challenge
+
     - name: Restore dependencies
       run: dotnet restore
 
