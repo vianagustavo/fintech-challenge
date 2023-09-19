@@ -14,7 +14,7 @@ public class LoginService : ILoginService
         _peopleRepository = peopleRepository;
         _tokenService = tokenService;
     }
-    public async Task<string?> ValidatePeople(PeopleLoginRequest loginRequest)
+    public async Task<PeopleLoginResponse?> ValidatePeople(PeopleLoginRequest loginRequest)
     {
         var people = await _peopleRepository.GetPeopleByDocument(loginRequest.Document);
 
@@ -29,7 +29,9 @@ public class LoginService : ILoginService
         {
             var token = _tokenService.GenerateToken(people);
 
-            return token;
+            var response = new PeopleLoginResponse(token);
+
+            return response;
         }
 
         throw new BadRequestException("Document/password are incorrect");

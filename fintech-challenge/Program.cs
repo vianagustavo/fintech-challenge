@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Reflection;
+using System.Text;
 using FintechChallenge.Database;
 using FintechChallenge.Middlewares;
 using FintechChallenge.Repositories;
@@ -10,9 +11,13 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var testAssemblyLocation = Assembly.GetExecutingAssembly().Location;
+var testProjectDirectory = Path.GetDirectoryName(testAssemblyLocation);
+var testAppSettingsPath = Path.Combine(testProjectDirectory, "appsettings.test.json");
 var configuration = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", optional: true)
+    .AddJsonFile(testAppSettingsPath, optional: true)
     .AddEnvironmentVariables()
     .Build();
 
@@ -42,6 +47,7 @@ var configuration = new ConfigurationBuilder()
         options.UseNpgsql(databaseConnectionString));
 
     var secretKey = configuration["Authentication:SecretKey"];
+
     var key = Encoding.ASCII.GetBytes(secretKey);
     builder.Services.AddAuthentication(x =>
     {

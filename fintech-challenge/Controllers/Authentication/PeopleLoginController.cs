@@ -20,6 +20,6 @@ public class PeopleLoginController : ControllerBase
     {
         var token = await _loginService.ValidatePeople(request);
 
-        return Ok(new { token });
+        return Ok(token);
     }
 }

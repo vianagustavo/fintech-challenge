@@ -6,5 +6,5 @@ namespace FintechChallenge.Services;
 
 public interface ILoginService
 {
-    Task<string?> ValidatePeople(PeopleLoginRequest loginRequest);
+    Task<PeopleLoginResponse?> ValidatePeople(PeopleLoginRequest loginRequest);
 }

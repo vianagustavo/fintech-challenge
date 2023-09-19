@@ -36,6 +36,11 @@ public class RevertTransactionService : IRevertTransactionService
             throw new BadRequestException($"Transaction does not belong to account: {accountId}");
         }
 
+        if (transaction.RevertedAt != null)
+        {
+            throw new BadRequestException($"Transaction has already been reverted at: {transaction.RevertedAt} ");
+        }
+
         var valueToRevert = -transaction.Value;
 
         if (account.AccountBalance + valueToRevert < 0)
