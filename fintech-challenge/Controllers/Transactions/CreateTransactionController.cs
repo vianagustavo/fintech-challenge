@@ -1,5 +1,5 @@
+using FintechChallenge.Domain;
 using FintechChallenge.Models;
-using FintechChallenge.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

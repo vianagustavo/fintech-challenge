@@ -1,6 +1,6 @@
+using FintechChallenge.Domain;
 using FintechChallenge.Exceptions;
 using FintechChallenge.Models;
-using FintechChallenge.Repositories;
 
 namespace FintechChallenge.Services;
 
@@ -18,6 +18,11 @@ public class CreatePeopleService : ICreatePeopleService
         string salt = BCrypt.Net.BCrypt.GenerateSalt();
         string hashedPassword = BCrypt.Net.BCrypt.HashPassword(createPeopleRequest.Password, salt);
         string formattedDocument = createPeopleRequest.Document.Replace(".", "").Replace("-", "");
+
+        if (formattedDocument.Length != 11 && formattedDocument.Length != 14)
+        {
+            throw new BadRequestException("Invalid CPF/CNPJ");
+        }
 
         var existingDocument = await _peopleRepository.GetPeopleByDocument(formattedDocument);
 

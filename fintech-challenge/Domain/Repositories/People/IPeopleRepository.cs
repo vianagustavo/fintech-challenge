@@ -1,6 +1,6 @@
 using FintechChallenge.Models;
 
-namespace FintechChallenge.Repositories;
+namespace FintechChallenge.Domain;
 
 public interface IPeopleRepository
 {

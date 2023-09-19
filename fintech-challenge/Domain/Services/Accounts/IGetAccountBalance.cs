@@ -1,4 +1,4 @@
-namespace FintechChallenge.Services;
+namespace FintechChallenge.Domain;
 
 public interface IGetAccountBalanceService
 {

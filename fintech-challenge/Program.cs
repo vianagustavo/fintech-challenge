@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using System.Text;
 using FintechChallenge.Database;
+using FintechChallenge.Domain;
 using FintechChallenge.Middlewares;
 using FintechChallenge.Repositories;
 using FintechChallenge.Services;

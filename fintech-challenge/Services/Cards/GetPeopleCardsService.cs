@@ -1,7 +1,7 @@
+using FintechChallenge.Domain;
 using FintechChallenge.Exceptions;
 using FintechChallenge.Helpers;
 using FintechChallenge.Models;
-using FintechChallenge.Repositories;
 
 namespace FintechChallenge.Services
 {

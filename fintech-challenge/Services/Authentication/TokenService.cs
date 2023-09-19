@@ -1,6 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using FintechChallenge.Domain;
 using FintechChallenge.Models;
 using Microsoft.IdentityModel.Tokens;
 
