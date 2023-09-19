@@ -10,7 +10,7 @@ De acordo com o desafio proposto, foi constru√≠da uma API que simula uma aplica√
 1. <a href="#Tecnologias-Utilizadas">Tecnologias Utilizadas</a>
 2. <a href="#Configurando-o-Projeto">Configurando o Projeto</a>
 5. <a href="#Inicializando">Inicializando</a>
-6. <a href="#Gerando-e-Implementando-Migrations-(Entity-Framework)">Gerando e Implementando Migrations (Prisma)</a>
+6. <a href="#Gerando-e-Implementando-Migrations-(Entity-Framework)">Gerando e Implementando Migrations (Entity Framework)</a>
 7. <a href="#Rodando-Testes">Rodando Testes</a>
 8. <a href="#CI/CD">CI/CD</a>
 9. <a href="#API-Endpoints">API Endpoints</a>
