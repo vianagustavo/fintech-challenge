@@ -1,4 +1,5 @@
 using FintechChallenge.Database;
+using FintechChallenge.Domain;
 using FintechChallenge.Models;
 using Microsoft.EntityFrameworkCore;
 

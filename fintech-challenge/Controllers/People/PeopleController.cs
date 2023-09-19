@@ -1,5 +1,5 @@
+using FintechChallenge.Domain;
 using FintechChallenge.Models;
-using FintechChallenge.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FintechChallenge.Controllers;

@@ -1,5 +1,4 @@
-using FintechChallenge.Models;
-using FintechChallenge.Services;
+using FintechChallenge.Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,6 +22,6 @@ public class GetAccountBalanceController : ControllerBase
         var balance = await _getAccountBalanceService.GetAccountBalance(accountId);
 
 
-        return Ok(new { balance });
+        return Ok(balance);
     }
 }

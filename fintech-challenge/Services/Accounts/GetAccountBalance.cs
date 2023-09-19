@@ -1,5 +1,6 @@
+using FintechChallenge.Domain;
 using FintechChallenge.Exceptions;
-using FintechChallenge.Repositories;
+using FintechChallenge.Models;
 
 namespace FintechChallenge.Services;
 
@@ -12,7 +13,7 @@ public class GetAccountBalanceService : IGetAccountBalanceService
         _accountRepository = accountRepository;
     }
 
-    public async Task<decimal> GetAccountBalance(Guid accountId)
+    public async Task<GetAccountBalanceResponse> GetAccountBalance(Guid accountId)
     {
         var account = await _accountRepository.GetAccountById(accountId);
 
@@ -21,7 +22,7 @@ public class GetAccountBalanceService : IGetAccountBalanceService
             throw new NotFoundException("Account not found");
         }
 
-        var response = account.AccountBalance;
+        var response = new GetAccountBalanceResponse(account.AccountBalance);
 
         return response;
     }

@@ -1,8 +1,6 @@
-
-
 using FintechChallenge.Models;
 
-namespace FintechChallenge.Services;
+namespace FintechChallenge.Domain;
 
 public interface ILoginService
 {
