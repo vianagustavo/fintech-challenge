@@ -34,7 +34,7 @@ Setar variáveis de ambiente de acordo. Os exemplos das variáveis utilizadas no
 
 |        Variável      |             Notas             |
 | -------------------- | ------------------------------|
-|     `DatabaseUrl`    |         Nome do Banco         |
+|     `DatabaseUrl`    |        String de conexão      |
 |      `SecretKey`     |      Secret - Token Usuário   |
 
 ## Inicializando
@@ -75,19 +75,24 @@ O workflow completo pode ser encontrado em:
 
 ## API Endpoints
 
-Os endpoints acessíveis apenas à `Pessoa` pode ser acessado através de autenticação Bearer e o token necessário pode ser gerado através da rota de login
+Os endpoints acessíveis apenas à `Pessoa` podem ser acessados através de autenticação Bearer e o token necessário pode ser gerado através da rota de login
 
 Utilize o header `Authentication: Bearer {token}` para autenticar as rotas protegidas
 
-|  Verbo   |                    Endpoint                     |                 Descrição                  |     Acessível à:      |
-| :------- | :---------------------------------------------: | :----------------------------------------: | :-------------------: |
-| `POST`   |                     `/people`                   |           Criação de uma pessoa            |       ---------       |
-| `POST`   |                   `/people/login`               |          Autenticação de pessoa            |       ---------       |
-| `POST`   |          `/people/:peopleId/accounts`           |           Criação de uma conta             |        Pessoa         |
-| `GET`    |          `/people/:peopleId/accounts`           |       Listagem de contas de uma pessoa     |        Pessoa         |
-| `POST`   |          `/accounts/:accountId/cards`           |            Criação de um cartão            |        Pessoa         |
-| `GET`    |          `/accounts/:accountId/cards`           |       Listagem de cartões de uma conta     |        Pessoa         |
-| `GET`    |           `/people/:peopleId/cards`             |      Listagem dos cartões de uma pessoa    |        Pessoa         |
+|  Verbo   |                        Endpoint                           |                 Descrição                  |     Acessível à:      |
+| :------- | :-------------------------------------------------------: | :----------------------------------------: | :-------------------: |
+| `POST`   |                        `/people`                          |           Criação de uma pessoa            |       ---------       |
+| `POST`   |                       `/people/login`                     |          Autenticação de pessoa            |       ---------       |
+| `POST`   |                  `/people/:peopleId/accounts`             |           Criação de uma conta             |        Pessoa         |
+| `GET`    |                  `/people/:peopleId/accounts`             |       Listagem de contas de uma pessoa     |        Pessoa         |
+| `POST`   |                  `/accounts/:accountId/cards`             |            Criação de um cartão            |        Pessoa         |
+| `GET`    |                  `/accounts/:accountId/cards`             |       Listagem de cartões de uma conta     |        Pessoa         |
+| `GET`    |                  `/people/:peopleId/cards`                |      Listagem dos cartões de uma pessoa    |        Pessoa         |
+| `POST`   |               `/accounts/:accountId/transactions`         |      Criação de uma transação em conta     |        Pessoa         |
+| `GET`    |               `/accounts/:accountId/transactions`         |     Listagem de transações de uma conta    |        Pessoa         |
+| `GET`    |                `/accounts/:accountId/balance`             |              Saldo de uma conta            |        Pessoa         |
+| `POST`   | `/accounts/:accountId/transactions/:transactionId/revert` |       Realiza reversão de uma transação    |        Pessoa         |
+
 
 
 ## Autor
