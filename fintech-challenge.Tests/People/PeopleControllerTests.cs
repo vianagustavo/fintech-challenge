@@ -21,7 +21,7 @@ namespace FintechChallenge.Tests.Integration
         [Fact]
         public async Task CreatePeople_ValidRequest_ReturnsCreated()
         {
-            var createRequest = new CreatePeopleRequest("Test Name", "1234", "1234567890");
+            var createRequest = new CreatePeopleRequest("Test Name", "12345678901", "1234");
 
 
             var jsonRequest = JsonSerializer.Serialize(createRequest);

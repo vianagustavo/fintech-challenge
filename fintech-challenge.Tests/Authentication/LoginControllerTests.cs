@@ -20,14 +20,14 @@ namespace FintechChallenge.Tests.Integration
         [Fact]
         public async Task LoginPeople_ValidCredentials_ReturnsOkWithToken()
         {
-            var createRequest = new CreatePeopleRequest("Test Name", "1234", "1234567890");
+            var createRequest = new CreatePeopleRequest("Test Name", "12345678901", "1234");
 
             var createPeopleJsonRequest = JsonSerializer.Serialize(createRequest);
             var createPeopleContent = new StringContent(createPeopleJsonRequest, Encoding.UTF8, "application/json");
 
             await _client.PostAsync("/people", createPeopleContent);
 
-            var validRequest = new PeopleLoginRequest("1234", "1234567890");
+            var validRequest = new PeopleLoginRequest("12345678901", "1234");
 
             var jsonRequest = JsonSerializer.Serialize(validRequest);
             var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
