@@ -22,6 +22,6 @@ public class GetAccountBalanceController : ControllerBase
         var balance = await _getAccountBalanceService.GetAccountBalance(accountId);
 
 
-        return Ok(new { balance });
+        return Ok(balance);
     }
 }

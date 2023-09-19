@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using FintechChallenge.Models;
+using FintechChallenge.Tests.Helpers;
 using Xunit;
 
 namespace FintechChallenge.Tests.Integration
@@ -22,23 +23,11 @@ namespace FintechChallenge.Tests.Integration
         public async Task CreatePeople_ValidRequest_ReturnsCreated()
         {
             var createRequest = new CreatePeopleRequest("Test Name", "12345678901", "1234");
+            var mockedUserFactory = new CreatePeopleMockFactory();
+            var mockedUser = await mockedUserFactory.MockPeople(createRequest, _client);
 
-
-            var jsonRequest = JsonSerializer.Serialize(createRequest);
-            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
-
-            var response = await _client.PostAsync("/people", content);
-
-            Assert.Equal(HttpStatusCode.Created, response.StatusCode);
-
-            var jsonResponse = await response.Content.ReadAsStringAsync();
-            var createPeopleResponse = JsonSerializer.Deserialize<CreatePeopleResponse>(jsonResponse, new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            });
-
-            Assert.NotNull(createPeopleResponse);
-            Assert.Equal("Test Name", createPeopleResponse.Name);
+            Assert.NotNull(mockedUser);
+            Assert.Equal("Test Name", mockedUser.Name);
         }
     }
 }

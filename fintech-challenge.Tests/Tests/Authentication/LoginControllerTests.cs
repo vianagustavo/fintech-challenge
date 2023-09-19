@@ -4,6 +4,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using FintechChallenge.Models;
+using FintechChallenge.Tests.Helpers;
 using Xunit;
 
 namespace FintechChallenge.Tests.Integration
@@ -22,28 +23,16 @@ namespace FintechChallenge.Tests.Integration
         {
             var createRequest = new CreatePeopleRequest("Test Name", "12345678901", "1234");
 
-            var createPeopleJsonRequest = JsonSerializer.Serialize(createRequest);
-            var createPeopleContent = new StringContent(createPeopleJsonRequest, Encoding.UTF8, "application/json");
+            var mockedUserFactory = new CreatePeopleMockFactory();
+            await mockedUserFactory.MockPeople(createRequest, _client);
 
-            await _client.PostAsync("/people", createPeopleContent);
+            var validLoginRequest = new PeopleLoginRequest("12345678901", "1234");
 
-            var validRequest = new PeopleLoginRequest("12345678901", "1234");
+            var mockedLoginFactory = new LoginPeopleMockFactory();
+            var loginResponseObject = await mockedLoginFactory.MockLogin(validLoginRequest, _client);
 
-            var jsonRequest = JsonSerializer.Serialize(validRequest);
-            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
-
-            var response = await _client.PostAsync("/people/login", content);
-
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-
-            var jsonResponse = await response.Content.ReadAsStringAsync();
-            var responseObject = JsonSerializer.Deserialize<PeopleLoginResponse>(jsonResponse, new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            });
-
-            Assert.NotNull(responseObject);
-            Assert.NotNull(responseObject.Token);
+            Assert.NotNull(loginResponseObject);
+            Assert.NotNull(loginResponseObject.Token);
         }
 
         [Fact]

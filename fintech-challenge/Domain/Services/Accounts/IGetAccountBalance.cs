@@ -1,6 +1,8 @@
+using FintechChallenge.Models;
+
 namespace FintechChallenge.Domain;
 
 public interface IGetAccountBalanceService
 {
-    Task<decimal> GetAccountBalance(Guid peopleId);
+    Task<GetAccountBalanceResponse> GetAccountBalance(Guid peopleId);
 }
