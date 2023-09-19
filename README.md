@@ -32,6 +32,8 @@ Setar variáveis de ambiente de acordo. Os exemplos das variáveis utilizadas no
 
 ```./fintech-challenge/appsettings.example.json```
 
+É necessário criar um arquivo `./fintech-challenge/appsettings.json` e adicionar as envs abaixo de acordo com o seu banco/secret:
+
 |        Variável      |             Notas             |
 | -------------------- | ------------------------------|
 |     `DatabaseUrl`    |        String de conexão      |
@@ -39,7 +41,7 @@ Setar variáveis de ambiente de acordo. Os exemplos das variáveis utilizadas no
 
 ## Inicializando
 
-- Clonar o repositório: `git@github.com:vianagustavo/fintech-challenge.git`
+- Clonar o repositório: `git clone git@github.com:vianagustavo/fintech-challenge.git`
 - Buildar o projeto: `dotnet build ./fintech-challenge/fintech-challenge.sln --configuration Release --no-restore`
 - Executar aplicação: `dotnet run --project fintech-challenge`
 
