@@ -17,7 +17,7 @@ var testAppSettingsPath = Path.Combine(testProjectDirectory, "appsettings.test.j
 var configuration = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", optional: true)
-    .AddJsonFile(testAppSettingsPath)
+    .AddJsonFile(testAppSettingsPath, optional: true)
     .AddEnvironmentVariables()
     .Build();
 

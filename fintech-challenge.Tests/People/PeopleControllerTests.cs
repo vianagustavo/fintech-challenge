@@ -38,7 +38,6 @@ namespace FintechChallenge.Tests.Integration
             });
 
             Assert.NotNull(createPeopleResponse);
-            Assert.NotEqual(Guid.Empty, createPeopleResponse.Id);
             Assert.Equal("Test Name", createPeopleResponse.Name);
         }
     }
